@@ -44,7 +44,12 @@
           }
         }
       }
-       
+      
+      function initialize_app() {
+        const calculate_button = document.getElementById("calculate");
+        calculate_button.addEventListener("click",calculate);
+      }
+
     </script>
 
   </head>
@@ -59,7 +64,7 @@
 
         <div class="col-sm">
           <input type="input" class="form-control" id="expression" placeholder="3*5"><br>
-          <button id="calculate" onclick="calculate()" class="btn btn-primary"> Calculate </button><br>
+          <button id="calculate" class="btn btn-primary"> Calculate </button><br>
           
           <h3> Log </h3><br>
           <ul id="log">
@@ -73,4 +78,5 @@
     </div>
     
   </body>
+  <script type="text/javascript">initialize_app()</script>
 </html>
