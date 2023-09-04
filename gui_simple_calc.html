@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Gui Calculator</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  	
+  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.10.1/math.js"></script>
+<!--     <style>
+      .custom-btn {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+      }
+    </style> -->
+    <script type="text/javascript">
+      
+      function addLog(msg) {
+        const ul = document.getElementById('log');
+        const li = document.createElement("li");
+        const msgTextNode = document.createTextNode(msg);
+        li.appendChild(msgTextNode);
+        ul.appendChild(li);
+      }
+
+      function calculate() {
+        
+        const formElement = document.getElementById('expression');
+        
+        if (formElement.value) {
+          try {
+        
+            const answer = math.evaluate(formElement.value);
+            addLog(formElement.value + " = " + answer);
+            formElement.value = answer;
+             
+
+          } catch(e) {
+        
+            console.log("Bad expression");
+            addLog(formElement.value + " is bad. Please fix.");            
+        
+          }
+        }
+      }
+      
+      function initialize_app() {
+        const calculate_button = document.getElementById("calculate");
+        calculate_button.addEventListener("click",calculate);
+      }
+
+    </script>
+
+  </head>
+  <body onload="initialize_app()">
+
+    <br><br>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm">
+        </div>
+
+        <div class="col-sm">
+          <input type="input" class="form-control" id="expression" placeholder="3*5"><br>
+
+        </div>
+        
+        <div class="col-sm">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm"></div>
+
+        <div class="col-sm">
+          <button id="N" class="btn btn-danger"> C </button>
+          <button id="N" class="btn btn-warning"> +- </button>
+          <button id="N" class="btn btn-warning"> % </button>
+          <button id="N" class="btn btn-warning"> ÷ </button>
+        </div>
+
+        <div class="col-sm"></div>
+      </div>
+      
+      <div class="row">
+        <div class="col-sm"></div>
+
+        <div class="col-sm">
+          <button id="N" class="btn btn-primary"> 7 </button>
+          <button id="N" class="btn btn-primary"> 8 </button>
+          <button id="N" class="btn btn-primary"> 9 </button>
+          <button id="N" class="btn btn-warning"> x </button>
+        </div>
+
+        <div class="col-sm"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm"></div>
+
+        <div class="col-sm">
+          <button id="N" class="btn btn-primary"> 4 </button>
+          <button id="N" class="btn btn-primary"> 5 </button>
+          <button id="N" class="btn btn-primary"> 6 </button>
+          <button id="N" class="btn btn-warning"> - </button>
+        </div>
+
+        <div class="col-sm"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm"></div>
+
+        <div class="col-sm">
+          <button id="N" class="btn btn-primary"> 1 </button>
+          <button id="N" class="btn btn-primary"> 2 </button>
+          <button id="N" class="btn btn-primary"> 3 </button>
+          <button id="N" class="btn btn-warning"> + </button>
+        </div>
+
+        <div class="col-sm"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm"></div>
+
+        <div class="col-sm">
+          <button id="N" class="btn btn-primary"> 0 </button>
+          <button id="N" class="btn btn-primary"> . </button>
+          <button id="N" class="btn btn-warning"> √ </button>
+          <button id="calculate" class="btn btn-success"> = </button><br>
+        </div>
+
+        <div class="col-sm"></div>
+      </div>
+      <br>
+      
+      <div class="row">
+        <div class="col-sm">
+        </div>
+
+        <div class="col-sm"> 
+          <h3> Log </h3><br>
+          
+          <ul id="log">
+          </ul>
+        </div>
+        
+        <div class="col-sm">
+          
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
