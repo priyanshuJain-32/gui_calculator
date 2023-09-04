@@ -38,7 +38,7 @@
         
             const answer = math.evaluate(formElement.value);
             addLog(formElement.value + " = " + answer);
-            formElement.value = answer;
+            formElement.value = '';
              
 
           } catch(e) {
@@ -53,6 +53,32 @@
       function initialize_app() {
         const calculate_button = document.getElementById("calculate");
         calculate_button.addEventListener("click",calculate);
+      }
+
+      function pickInput(x) {
+        let expression = document.getElementById("expression").value;
+        expression += x;
+        document.getElementById("expression").value = expression;
+      }
+
+      function clearCalc() {
+        document.getElementById('expression').value = '';
+      }
+
+      function reverseSign() {
+        document.getElementById('expression').value *= -1;
+      }
+
+      function convertToPercentage() {
+        let expression = document.getElementById('expression').value;
+        expression = expression*100 + '%';
+        document.getElementById('expression').value = expression;
+      }
+
+      function squareRoot() {
+        let expression = document.getElementById('expression').value;
+        expression = Math.pow(expression,0.5);
+        document.getElementById('expression').value = expression; 
       }
 
     </script>
@@ -79,10 +105,10 @@
         <div class="col-sm"></div>
 
         <div class="col-sm">
-          <button id="N" class="btn btn-danger"> C </button>
-          <button id="N" class="btn btn-warning"> +- </button>
-          <button id="N" class="btn btn-warning"> % </button>
-          <button id="N" class="btn btn-warning"> ÷ </button>
+          <button id="N" class="btn btn-danger" onclick="clearCalc()"> C </button>
+          <button id="N" class="btn btn-warning" onclick="reverseSign()"> +- </button>
+          <button id="N" class="btn btn-warning" onclick="convertToPercentage()"> % </button>
+          <button id="N" class="btn btn-warning" onclick="pickInput('/')"> ÷ </button>
         </div>
 
         <div class="col-sm"></div>
@@ -92,10 +118,10 @@
         <div class="col-sm"></div>
 
         <div class="col-sm">
-          <button id="N" class="btn btn-primary"> 7 </button>
-          <button id="N" class="btn btn-primary"> 8 </button>
-          <button id="N" class="btn btn-primary"> 9 </button>
-          <button id="N" class="btn btn-warning"> x </button>
+          <button id="N" class="btn btn-primary" onclick="pickInput('7')"> 7 </button>
+          <button id="N" class="btn btn-primary" onclick="pickInput('8')"> 8 </button>
+          <button id="N" class="btn btn-primary" onclick="pickInput('9')"> 9 </button>
+          <button id="N" class="btn btn-warning" onclick="pickInput('*')"> x </button>
         </div>
 
         <div class="col-sm"></div>
@@ -105,10 +131,10 @@
         <div class="col-sm"></div>
 
         <div class="col-sm">
-          <button id="N" class="btn btn-primary"> 4 </button>
-          <button id="N" class="btn btn-primary"> 5 </button>
-          <button id="N" class="btn btn-primary"> 6 </button>
-          <button id="N" class="btn btn-warning"> - </button>
+          <button id="N" class="btn btn-primary" onclick="pickInput('4')"> 4 </button>
+          <button id="N" class="btn btn-primary" onclick="pickInput('5')"> 5 </button>
+          <button id="N" class="btn btn-primary" onclick="pickInput('6')"> 6 </button>
+          <button id="N" class="btn btn-warning" onclick="pickInput('-')"> - </button>
         </div>
 
         <div class="col-sm"></div>
@@ -118,10 +144,10 @@
         <div class="col-sm"></div>
 
         <div class="col-sm">
-          <button id="N" class="btn btn-primary"> 1 </button>
-          <button id="N" class="btn btn-primary"> 2 </button>
-          <button id="N" class="btn btn-primary"> 3 </button>
-          <button id="N" class="btn btn-warning"> + </button>
+          <button id="N" class="btn btn-primary" onclick="pickInput('1')"> 1 </button>
+          <button id="N" class="btn btn-primary" onclick="pickInput('2')"> 2 </button>
+          <button id="N" class="btn btn-primary" onclick="pickInput('3')"> 3 </button>
+          <button id="N" class="btn btn-warning" onclick="pickInput('+')"> + </button>
         </div>
 
         <div class="col-sm"></div>
@@ -131,9 +157,9 @@
         <div class="col-sm"></div>
 
         <div class="col-sm">
-          <button id="N" class="btn btn-primary"> 0 </button>
-          <button id="N" class="btn btn-primary"> . </button>
-          <button id="N" class="btn btn-warning"> √ </button>
+          <button id="N" class="btn btn-primary" onclick="pickInput('0')"> 0 </button>
+          <button id="N" class="btn btn-primary" onclick="pickInput('.')"> . </button>
+          <button id="N" class="btn btn-warning" onclick="squareRoot()"> √ </button>
           <button id="calculate" class="btn btn-success"> = </button><br>
         </div>
 
